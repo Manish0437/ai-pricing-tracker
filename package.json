@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "postinstall": "npx playwright install chromium --with-deps",
     "lint": "eslint",
     "scheduler": "ts-node --project tsconfig.ts-node.json lib/scheduler.ts"
   },
