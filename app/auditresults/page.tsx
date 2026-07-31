@@ -71,7 +71,7 @@ export default function AuditResults() {
               <span className="text-green-500 uppercase max-md:text-[16px] md:text-xl">{result.recommendedProvider}</span>
             </p>
             </div>
-            <p className="uppercase text-green-400 bg-[#101712] border border-green-300 rounded-xl p-1 px-5 max-md:text-xs max-md:px-2">optimized choice</p>
+            <p className="uppercase text-green-400 bg-[#101712] border border-green-300 rounded-xl p-1 px-5 max-md:w-[200px] max-md:text-[12px] max-md:px-2">optimized choice</p>
             
           </div>
           <div className="max-md:items-start flex flex-col md:flex-row justify-between items-center w-full mt-4">

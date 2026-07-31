@@ -163,19 +163,19 @@ export default function InputForm() {
       <div className="flex flex-col items-start justify-center w-[85vw] md:mt-[-60px] lg:mt-0 xl:mt-[-60px]">
         <button
           onClick={() => router.push("/")}
-          className="text-white py-2 flex items-center self-start mt-[25px]"
+          className="text-black dark:text-white py-2 flex items-center self-start mt-[25px]"
         >
-          <FaArrowLeft className="mr-3 border-2 border-gray-400 p-[6px] box-content rounded-full" />
+          <FaArrowLeft className="text-black dark:text-white mr-3 border-2 border-gray-400 p-[6px] box-content rounded-full" />
           Back to Home
         </button>
 
         <div className="border border-gray-400 rounded-2xl p-5 w-[100%] min-h-[70vh] mt-[15px]">
-          <h1 className="text-white font-bold text-2xl">AI Stack Audit</h1>
+          <h1 className="text-black dark:text-white font-bold text-2xl">AI Stack Audit</h1>
           <p className="text-gray-400 mt-2">
             Tell us about your AI tools and we'll find where you can save
           </p>
 
-          <p className="text-white font-bold text-xl my-2 mt-4">
+          <p className="text-black dark:text-white font-bold text-xl my-2 mt-4">
             Team Information
           </p>
 
@@ -185,7 +185,7 @@ export default function InputForm() {
               <input
                 type="number"
                 id="team-size"
-                className="border-gray-300 border rounded-md w-[90%] text-white p-1 focus-visible:ring-1
+                className="border-gray-300 border rounded-md w-[90%] text-black dark:text-white p-1 focus-visible:ring-1
         focus-visible:ring-gray-400 mt-2"
                 placeholder="1"
                 min={1}
@@ -216,9 +216,9 @@ export default function InputForm() {
           </div>
 
           <div className="flex flex-row justify-between w-[100%] items-center mt-5 mb-5">
-            <p className="max-md:text-md md:text-xl font-bold text-white">AI Tools You Pay For</p>
+            <p className="max-md:text-md md:text-xl font-bold text-black dark:text-white">AI Tools You Pay For</p>
             <button
-              className="text-white flex flex-row justify-center items-center font-bold border border-gray-300 rounded-lg p-1 md:p-2 max-md:text-md"
+              className="text-black dark:text-white flex flex-row justify-center items-center font-bold border border-gray-300 rounded-lg p-1 md:p-2 max-md:text-md"
               onClick={handleAddTools}
             >
               <HiOutlinePlusSm className="md:mr-3" />
@@ -304,7 +304,7 @@ export default function InputForm() {
           )}
 
           <button
-            className="w-[100%] font-bold text-md bg-white rounded-lg text-black py-3 mt-4 ${isAnalyzing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}"
+            className="w-[100%] font-bold text-md bg-black dark:bg-white rounded-lg dark:text-black text-white py-3 mt-4 ${isAnalyzing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}"
             onClick={handleAnalyze}
             disabled={isAnalyzing}
           >

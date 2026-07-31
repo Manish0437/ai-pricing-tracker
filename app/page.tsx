@@ -59,75 +59,81 @@ export default function Home() {
           </div>
 
           {/* sample audit container */}
-          <div className="flex-1 flex flex-col items-center justify-center p-8 w-[95%] md:w-[50%] dark:bg-white dark:text-black text-white bg-black rounded-2xl h-fit lg:h-[50%] animate-auditcontainer">
+          <div className="flex-1 flex flex-col items-center justify-center p-8 w-[95%] md:w-[50%] dark:bg-white text-black bg-[#e0ecff] rounded-2xl h-fit lg:h-[50%] animate-auditcontainer">
             <div className="flex flex-row justify-between items-center w-[100%]">
               <div className="flex flex-col items-start justify-center">
                 <p className="font-semibold text-xl">Sample audit . 4 tools</p>
-                <p className="text-gray-500">3-person coding team</p>
+                <p className="text-gray-400 dark:text-gray-500">3-person coding team</p>
               </div>
               <div className="flex flex-col items-end justify-center">
                 <p className={`${dmSerif.className} text-green-500 text-5xl font-bold`}>$91</p>
-                <p>saved per month</p>
+                <p className="text-right">saved per month</p>
               </div>
             </div>
 
-            <div className="flex flex-row justify-center items-center w-[100%] mt-4">
-              <p className="text-blue-950 bg-blue-300 p-2 rounded-xl">Cu</p>
-              <div className="flex flex-col justify-center items-start ml-4">
-                <p className="text-black">Cursor</p>
-                <p className="text-gray-700 flex flex-row items-center">Pro <FaArrowRight className="mx-2"/> hobby</p>
+
+            <div className="flex flex-row justify-between items-end w-[100%] mt-4">
+              <div className="flex flex-col justify-center items-start w-[60%]">
+                <div className="flex flex-row justify-between items-center">
+                  <p className="text-blue-950 bg-blue-300 p-2 rounded-xl">Cu</p>
+                  <p className="text-black ml-[5px]">Cursor</p>
+                </div>
+                <p className="text-gray-400 dark:text-gray-700 flex flex-row items-center">Pro <FaArrowRight className="mx-2"/> hobby</p>
               </div>
-              <div className="flex flex-col justify-center items-end w-[100%]">
+              <div className="flex flex-col justify-center items-end w-[40%]">
                 <p className="text-green-500 font-medium">-$60/mo</p>
-                <p className="text-gray-700">Downgrade</p>
+                <p className="text-gray-400 dark:text-gray-700">Downgrade</p>
               </div>
             </div>
-            <hr className="text-gray-700 w-[100%] mt-4"/>
 
 
 
-            <div className="flex flex-row justify-center items-center w-[100%] mt-4">
-              <p className="text-gray-950 bg-gray-300 p-2 rounded-xl">GH</p>
-              <div className="flex flex-col justify-center items-start ml-4">
-                <p className="text-black">GitHub Copilot</p>
-                <p className="text-gray-700 flex flex-row items-center">Business <FaArrowRight className="mx-2"/> Remove</p>
+
+            <div className="flex flex-row justify-between items-end w-[100%] mt-4">
+              <div className="flex flex-col justify-center items-start w-[80%]">
+                <div className="flex flex-row justify-between items-center">
+                  <p className="text-gray-950 bg-gray-300 p-2 rounded-xl">GH</p>
+                  <p className="text-black ml-[5px]">GitHub Copilot</p>
+                </div>
+                <p className="text-gray-400 dark:text-gray-700 flex flex-row items-center">Business <FaArrowRight className="mx-2"/> Remove</p>
               </div>
-              <div className="flex flex-col justify-center items-end w-[100%]">
+              <div className="flex flex-col justify-center items-end w-[20%]">
                 <p className="text-green-500 font-medium">-$57/mo</p>
-                <p className="text-gray-700">Switch</p>
+                <p className="text-gray-400 dark:text-gray-700">Switch</p>
               </div>
             </div>
-            <hr className="text-gray-700 w-[100%] mt-4"/>
 
 
 
 
 
-
-            <div className="flex flex-row justify-center items-center w-[100%] mt-4">
-              <p className="text-orange-600 bg-orange-300 p-2 rounded-xl">Cl</p>
-              <div className="flex flex-col justify-center items-start ml-4">
-                <p className="text-black">Claude</p>
-                <p className="text-gray-700 flex flex-row items-center">Pro (keep)</p>
+            <div className="flex flex-row justify-between items-end w-[100%] mt-4">
+              <div className="flex flex-col justify-center items-start w-[60%]">
+                <div className="flex flex-row justify-between items-center">
+                  <p className="text-orange-600 bg-orange-300 p-2 rounded-xl">Cl</p>
+                  <p className="text-black ml-[5px]">Claude</p>
+                </div>
+                <p className="text-gray-400 dark:text-gray-700 flex flex-row items-center min-w-[150%]">Pro (keep)</p>
               </div>
-              <div className="flex flex-col justify-center items-end w-[100%]">
+              <div className="flex flex-col justify-center items-end w-[40%]">
                 <p className="text-green-500 font-medium">Optimal <span className="text-green-500">✓</span></p>
-                <p className="text-gray-700">No change</p>
+                <p className="text-gray-400 dark:text-gray-700">No change</p>
               </div>
             </div>
-            <hr className="text-gray-700 w-[100%] mt-4"/>
 
 
 
-            <div className="flex flex-row justify-center items-center w-[100%] mt-4">
-              <p className="text-green-800 bg-green-100 p-2 rounded-xl">GP</p>
-              <div className="flex flex-col justify-center items-start ml-4">
-                <p className="text-black">ChatGPT</p>
-                <p className="text-gray-700 flex flex-row items-center min-w-[150%]">Plus <FaArrowRight className="mx-2"/> Free tier</p>
+            <div className="flex flex-row justify-between items-end w-[100%] mt-4">
+              <div className="flex flex-col justify-center items-start w-[60%]">
+                <div className="flex flex-row justify-between items-center">
+                  <p className="text-green-800 bg-green-100 p-2 rounded-xl">GP</p>
+                  <p className="text-black ml-[5px]">ChatGPT</p>
+                </div>
+                <p className="text-gray-400 dark:text-gray-700 flex flex-row items-center min-w-[150%]">Plus <FaArrowRight className="mx-2"/> Free tier</p>
               </div>
-              <div className="flex flex-col justify-center items-end w-[100%]">
+              <div className="flex flex-col justify-center items-end w-[40%]">
                 <p className="text-green-500 font-medium">-$20/mo</p>
-                <p className="text-gray-700">Downgrade</p>
+                <p className="text-gray-400 dark:text-gray-700">Downgrade</p>
               </div>
             </div>
 
@@ -219,7 +225,7 @@ export default function Home() {
         <h1 className="text-white font-extrabold text-4xl mt-10">How It Works</h1>
 
         <div className="flex flex-row justify-between items-stretch w-full mt-10 mb-[150px] max-md:flex-col max-md:min-w-[100%] max-md:gap-10">
-          <div className={`flex flex-col justify-start items-center bg-white rounded-2xl p-8 w-[30%] max-md:w-[100%] ${
+          <div className={`flex flex-col justify-start items-center bg-white rounded-2xl p-8 w-[30%] max-md:w-[100%] shadow-md ${
     card1.state === "hidden"
         ? "opacity-0 scale-75"
         : ""
@@ -241,7 +247,7 @@ ${
             <p className="text-gray-600 text-center">Tell us which AI tools you use, your AI model plans, and monthly spend</p>
           </div>
 
-          <div className={`flex flex-col justify-start items-center bg-white rounded-2xl p-8 w-[30%] max-md:w-[100%] ${
+          <div className={`flex flex-col justify-start items-center bg-white rounded-2xl p-8 w-[30%] max-md:w-[100%] shadow-md ${
     card2.state === "hidden"
         ? "opacity-0 scale-75"
         : ""
@@ -263,7 +269,7 @@ ${
             <p className="text-gray-600 text-center">See exactly where you're overspending and what to do about it</p>
           </div>
 
-          <div className={`flex flex-col justify-start items-center bg-white rounded-2xl p-8 w-[30%] max-md:w-[100%] ${
+          <div className={`flex flex-col justify-start items-center bg-white rounded-2xl p-8 w-[30%] max-md:w-[100%] shadow-md ${
     card3.state === "hidden"
         ? "opacity-0 scale-75"
         : ""
