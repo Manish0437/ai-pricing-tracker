@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 
+
 export const metadata: Metadata = {
   // Basic
   title: {
@@ -87,7 +88,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google9e2f91ff96970a33.html",
+    google: "DfjWRbH2XpYZTOPPjWXrJIomVmoJjfYZ3P45Un9W578",
   },
 
 }

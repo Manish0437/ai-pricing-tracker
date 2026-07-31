@@ -6,6 +6,7 @@ import { MdElectricBolt } from "react-icons/md";
 import { IoShieldOutline } from "react-icons/io5";
 import {BsCurrencyDollar} from "react-icons/bs";
 import { useCardAnimation } from "@/hooks/useCardAnimation";
+import Script from "next/script";
 
 import React from "react";
 import Autoplay from "embla-carousel-autoplay"
@@ -17,16 +18,7 @@ import {
 } from "@/components/ui/carousel"
 
 import {useRouter} from "next/navigation";
-import type { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: "Compare AI Model Pricing — OpenAI, Anthropic, Gemini, Groq",
-  description:
-    "Real-time comparison of AI API pricing. Find the cheapest model for chat, coding, reasoning, embeddings and more. Updated daily from official sources.",
-  alternates: {
-    canonical: "/",
-  },
-}
 
 const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
