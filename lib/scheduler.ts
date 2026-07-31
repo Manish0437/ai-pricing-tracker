@@ -5,17 +5,21 @@ import cron from "node-cron"
 import { scrapeAllProviders } from "./scraper"
 import { normalizeAllProviders } from "./normalizer"
 import { saveAllPricingToDB } from "./storage"
+import { disconnectDB } from "./db"
 import fs from "fs"
 import path from "path"
 
 function writeLog(message: string): void {
-  const logsDir = path.join(process.cwd(), "logs")
-  if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir)
-  const today = new Date().toISOString().split("T")[0]
-  const logFile = path.join(logsDir, `${today}.log`)
-  const line = `[${new Date().toISOString()}] ${message}\n`
-  fs.appendFileSync(logFile, line)
-  console.log(message)
+  console.log(`[${new Date().toISOString()}] ${message}`)
+
+  // Only write to file locally — Railway captures stdout automatically
+  if (process.env.NODE_ENV !== "production") {
+    const logsDir = path.join(process.cwd(), "logs")
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir)
+    const today = new Date().toISOString().split("T")[0]
+    const logFile = path.join(logsDir, `${today}.log`)
+    fs.appendFileSync(logFile, message + "\n")
+  }
 }
 
 async function runDailyPipeline() {
@@ -26,52 +30,38 @@ async function runDailyPipeline() {
   const startTime = Date.now()
 
   try {
-    // Step 1: Scrape
-    writeLog("\n📥 STEP 1: SCRAPING ALL PROVIDERS\n")
+    writeLog("📥 STEP 1: SCRAPING")
     const scrapeResults = await scrapeAllProviders()
     const scrapedOk = scrapeResults.filter((r) => r.success).length
-    const scrapedFailed = scrapeResults.filter((r) => !r.success).length
-    writeLog(`Scraping complete: ${scrapedOk} succeeded, ${scrapedFailed} failed`)
+    writeLog(`Scraping complete: ${scrapedOk}/${scrapeResults.length}`)
 
-    if (scrapedFailed > 0) {
-      scrapeResults
-        .filter((r) => !r.success)
-        .forEach((r) => writeLog(`  ✗ ${r.provider}: ${r.error}`))
-    }
-
-    // Step 2: Normalize
-    writeLog("\n🧠 STEP 2: NORMALIZING\n")
+    writeLog("🧠 STEP 2: NORMALIZING")
     const normalized = await normalizeAllProviders(scrapeResults)
-    writeLog(`Normalization complete: ${normalized.length}/${scrapeResults.length} succeeded`)
+    writeLog(`Normalization complete: ${normalized.length}/${scrapeResults.length}`)
 
-    // Step 3: Save (replaces all existing data)
-    writeLog("\n💾 STEP 3: SAVING TO MONGODB\n")
+    writeLog("💾 STEP 3: SAVING TO MONGODB")
     await saveAllPricingToDB(normalized)
+    await disconnectDB()
 
-    const duration = ((Date.now() - startTime) / 1000).toFixed(1)
-    writeLog(`\n✅ PIPELINE COMPLETE in ${duration}s`)
-    writeLog(`Scraped: ${scrapedOk}/${scrapeResults.length}`)
-    writeLog(`Normalized: ${normalized.length}/${scrapeResults.length}`)
+    const duration = ((Date.now() - startTime) / 1000 / 60).toFixed(1)
+    writeLog(`✅ PIPELINE COMPLETE in ${duration} minutes`)
     writeLog(`Saved: ${normalized.length} providers`)
 
   } catch (error) {
-    writeLog(`\n❌ PIPELINE CRASHED: ${error instanceof Error ? error.message : error}`)
+    writeLog(`❌ PIPELINE FAILED: ${error instanceof Error ? error.message : error}`)
   }
 }
 
-// Run immediately on startup so you don't wait 24h for first run
-writeLog("Scheduler starting — running pipeline now...")
+// Run once immediately on startup
+writeLog("🚀 Scheduler service starting...")
 runDailyPipeline()
 
-// Then schedule to run every 24 hours at 2:00 AM
-// Cron format: minute hour day month weekday
-cron.schedule("0 2 * * *", () => {
-  writeLog("⏰ Scheduled trigger fired")
+// Then run every day at 10:30 AM IST
+cron.schedule("30 10 * * *", () => {
+  writeLog("⏰ Daily trigger fired")
   runDailyPipeline()
 }, {
-  timezone: "Asia/Kolkata" // IST — change to your timezone if needed
+  timezone: "Asia/Kolkata"
 })
 
-writeLog("✓ Scheduler running — next run at 2:00 AM IST daily")
-writeLog("  Keep this process alive to maintain the schedule")
-writeLog("  Press Ctrl+C to stop")
+writeLog("✓ Scheduler running — next run at 10:30 AM IST")
